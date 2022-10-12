@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private BoxCollider2D box;
     private Animator anim;
-    private float horizInput;
+    public float horizInput { get; private set; }
     private float initScaleX;
     private float scaleX;
     
@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         // walking up stairs
         Vector2 stairPos = stairCheck();
         if(stairPos.y - box.bounds.min.y < stairClimbHeight && isGrounded())
+            // maybe LERP this?
             transform.position = new Vector3(stairPos.x + (-Mathf.Sign(horizInput) * box.bounds.extents.x - 0.01f), 
                                              stairPos.y + box.bounds.extents.y, transform.position.z);
 
@@ -65,6 +66,9 @@ public class PlayerMovement : MonoBehaviour
         // animations
         anim.SetBool("Moving", horizInput != 0);
         anim.SetBool("Grounded", isGrounded() || downStairs());
+
+        if(Input.GetKeyDown(KeyCode.F))
+            transform.position = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
     }
 
     private bool isGrounded() {
@@ -100,12 +104,12 @@ public class PlayerMovement : MonoBehaviour
             SoundManager.instance.playSound(jumpSound);
         }
     }
-
+/*
     private void OnDrawGizmos() {
         // draw stairCheck boxcast
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(box.bounds.center + (Vector3.right * Mathf.Sign(horizInput) * 0.1f), 
                             box.bounds.size);
     }
-
+*/
 }
