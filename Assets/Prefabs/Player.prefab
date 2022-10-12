@@ -170,11 +170,9 @@ MonoBehaviour:
   speed: 5
   jumpPower: 15
   terminalVelocity: 20
+  stairClimbHeight: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  slopeLayer:
-    serializedVersion: 2
-    m_Bits: 64
   jumpSound: {fileID: 8300000, guid: 89b0aa80941b52f449ee13696d2049aa, type: 3}
   walkSound: {fileID: 8300000, guid: ecf1af0bc4d1b2b44a8d51feab5fc97d, type: 3}
