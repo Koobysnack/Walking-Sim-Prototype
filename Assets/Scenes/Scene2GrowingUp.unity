@@ -10912,6 +10912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelTeleporter
       objectReference: {fileID: 0}
+    - target: {fileID: 6073351089041277689, guid: a6397bd2d55cf6544aecacfc4cf678db, type: 3}
+      propertyPath: nextLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6073351089041277690, guid: a6397bd2d55cf6544aecacfc4cf678db, type: 3}
       propertyPath: m_RootOrder
       value: 3

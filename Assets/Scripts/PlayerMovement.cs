@@ -47,14 +47,14 @@ public class PlayerMovement : MonoBehaviour
         // facing direction
         scaleX = horizInput != 0 ? (horizInput / Mathf.Abs(horizInput)) * initScaleX : transform.localScale.x;
         transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
-
+/*
         // walking up stairs
         Vector2 stairPos = stairCheck();
         if(stairPos.y - box.bounds.min.y < stairClimbHeight && isGrounded())
             // maybe LERP this?
             transform.position = new Vector3(stairPos.x + (-Mathf.Sign(horizInput) * box.bounds.extents.x - 0.03f), 
                                              stairPos.y + box.bounds.extents.y + 0.07f, transform.position.z);
-
+*/
         // jumping
         if(Input.GetKeyDown(KeyCode.Space))
             jump();

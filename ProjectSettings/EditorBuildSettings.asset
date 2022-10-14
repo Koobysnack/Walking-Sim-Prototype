@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene2.unity
     guid: 73d8d76cc3cfd554982bafe751922828
+  - enabled: 1
+    path: Assets/Scenes/Scene2GrowingUp.unity
+    guid: a396fbb91d14b71408dd2e281c7ae79e
+  - enabled: 1
+    path: Assets/Scenes/Scene3Adult.unity
+    guid: da8b52835431924498eab70ed72cdd0f
   m_configObjects: {}
