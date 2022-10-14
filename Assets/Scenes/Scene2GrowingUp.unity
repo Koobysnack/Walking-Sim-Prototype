@@ -10040,6 +10040,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7166892294060424293, guid: 7acdc7ff22cd62d4191fb7720377ef0e, type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8cf47080cce72324e997b9c9872c59dc, type: 3}
+    - target: {fileID: 7166892294060424293, guid: 7acdc7ff22cd62d4191fb7720377ef0e, type: 3}
+      propertyPath: walkSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ee49cedcd4655494ea5d9b15a7e99a58, type: 3}
     - target: {fileID: 7166892294060424295, guid: 7acdc7ff22cd62d4191fb7720377ef0e, type: 3}
       propertyPath: m_Size.x
       value: 0.24279405
@@ -10914,7 +10922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6073351089041277689, guid: a6397bd2d55cf6544aecacfc4cf678db, type: 3}
       propertyPath: nextLevel
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6073351089041277690, guid: a6397bd2d55cf6544aecacfc4cf678db, type: 3}
       propertyPath: m_RootOrder
@@ -11289,6 +11297,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -9.8897505
       objectReference: {fileID: 0}
+    - target: {fileID: 5905172630436353612, guid: b0d4b86e3a6aef646aee3adb05b6c502, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905172630436353612, guid: b0d4b86e3a6aef646aee3adb05b6c502, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 446fd750abbde104e84e1bd7acdffdbf, type: 3}
     - target: {fileID: 8755918493014032656, guid: b0d4b86e3a6aef646aee3adb05b6c502, type: 3}
       propertyPath: m_Follow
       value: 
