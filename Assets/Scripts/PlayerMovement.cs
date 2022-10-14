@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D body;
     private BoxCollider2D box;
+    private CapsuleCollider2D footCollider;
     private Animator anim;
     public float horizInput { get; private set; }
     private float initScaleX;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        footCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
         initScaleX = transform.localScale.x;
     }
@@ -50,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 stairPos = stairCheck();
         if(stairPos.y - box.bounds.min.y < stairClimbHeight && isGrounded())
             // maybe LERP this?
-            transform.position = new Vector3(stairPos.x + (-Mathf.Sign(horizInput) * box.bounds.extents.x - 0.01f), 
-                                             stairPos.y + box.bounds.extents.y, transform.position.z);
+            transform.position = new Vector3(stairPos.x + (-Mathf.Sign(horizInput) * box.bounds.extents.x - 0.03f), 
+                                             stairPos.y + box.bounds.extents.y + 0.07f, transform.position.z);
 
         // jumping
         if(Input.GetKeyDown(KeyCode.Space))
@@ -66,21 +68,20 @@ public class PlayerMovement : MonoBehaviour
         // animations
         anim.SetBool("Moving", horizInput != 0);
         anim.SetBool("Grounded", isGrounded() || downStairs());
-
-        if(Input.GetKeyDown(KeyCode.F))
-            transform.position = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
     }
 
     private bool isGrounded() {
         // boxcast to see if the ground is just under the player
-        RaycastHit2D ray = Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D ray = Physics2D.BoxCast(footCollider.bounds.center, footCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return ray.collider != null;
     }
 
     private Vector2 stairCheck() {
         // boxcast to see if player's feet are touching the ground in the direction they're moving
-        RaycastHit2D ray = Physics2D.BoxCast(new Vector2(box.bounds.center.x, box.bounds.center.y + (stairClimbHeight / 2)), 
-                                             box.bounds.size, 0, Vector2.right * Mathf.Sign(horizInput), 0.1f, groundLayer);
+        RaycastHit2D ray = Physics2D.BoxCast(new Vector2(footCollider.bounds.center.x, 
+                                             footCollider.bounds.center.y + (stairClimbHeight / 2)), 
+                                             footCollider.bounds.size, 0, Vector2.right * Mathf.Sign(horizInput), 0.1f, groundLayer);
+        
         // if there is a collision and it has a box collider, return the closest top corner to the player
         if(ray.collider != null) {
             Collider2D stairCollider = ray.collider.GetComponent<Collider2D>();
@@ -94,7 +95,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool downStairs() {
         // raycast to see if the ground is far enough under the player to be a possible stair
-        RaycastHit2D ray = Physics2D.Raycast(box.bounds.min, Vector2.down, stairClimbHeight + 0.1f, groundLayer);
+        RaycastHit2D ray = Physics2D.Raycast(footCollider.bounds.min * Mathf.Sign(horizInput), Vector2.down, 
+                                             stairClimbHeight + 0.1f, groundLayer);
         return ray.collider != null;
     }
 
@@ -108,8 +110,9 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos() {
         // draw stairCheck boxcast
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(box.bounds.center + (Vector3.right * Mathf.Sign(horizInput) * 0.1f), 
-                            box.bounds.size);
+        Gizmos.DrawWireCube(footCollider.bounds.center + (Vector3.right * Mathf.Sign(horizInput) * 0.1f), 
+                            footCollider.bounds.size);
+        
     }
 */
 }
