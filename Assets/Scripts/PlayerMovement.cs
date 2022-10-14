@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         
         // animations
         anim.SetBool("Moving", horizInput != 0);
-        anim.SetBool("Grounded", isGrounded() || downStairs());
+        anim.SetBool("Grounded", isGrounded());
     }
 
     private bool isGrounded() {
