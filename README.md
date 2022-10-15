@@ -3,7 +3,7 @@
 ## Credits:
 #### Andrew Cho- Art
 #### Adam Furhman- Art
-#### Reini Igna- Producer
+#### Reini Igna- Narrative Design
 #### Mason Kubiak- Programming
 #### Randy Le- Level Design
 #### Justin Murillo- Level Design
